@@ -1,0 +1,44 @@
+.comm-view{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 200px;
+}
+
+.comm-title{
+    text-align: center;
+}
+
+.send-msg{
+    width: 60%;
+    position: fixed;
+    bottom: 10px;
+    left: 20%;
+    margin-top: 40px;
+}
+
+.reply-msg-send{
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    word-wrap: break-word;
+}
+.reply-username {
+    font-weight: 300;
+    font-size: 15px;
+}
+.reply-text {
+    font-weight: 30;
+    font-size: 12px;
+}
+
+.close{
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    bottom: 5px;
+}
+
+
+

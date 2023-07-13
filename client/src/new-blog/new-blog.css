@@ -1,0 +1,11 @@
+.new-blog-form{
+    width: 70%; 
+    margin: 0 auto;
+}
+
+#prev{
+    display: block;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    max-width: 100%;
+}
