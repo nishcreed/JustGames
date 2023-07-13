@@ -81,6 +81,7 @@ export default function NewBlog(){
                 </div>
 
                 <div classname="form-group">
+                    <label>Blog to be added under</label>
                     <Select 
                         isMulti
                         options={options}
