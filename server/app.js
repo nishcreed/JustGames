@@ -39,7 +39,8 @@ app.use(sessions({
     resave: false
 }));
 
-mongoose.connect('mongodb://localhost:27017/game-library-web-app', {
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/game-library-web-app';
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
