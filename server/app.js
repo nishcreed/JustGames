@@ -14,7 +14,7 @@ const Community=require('./models/community')
 const upload = require('./cloudinary/index')
 const mongoose=require('mongoose');
 const path = require('path')
-const multer = require("multer")
+const cors = require("cors");
 
 process.on('uncaughtException',(err)=>{
   console.log(err)
@@ -23,7 +23,12 @@ process.on('uncaughtException',(err)=>{
 const app = express();
 app.engine('ejs',ejsMate);
 
-// app.use(express.urlencoded({extended:true }));
+
+app.use(cors(
+  {
+    origin:['https://justgames.onrender.com/']
+  }
+));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.set('view engine','ejs');

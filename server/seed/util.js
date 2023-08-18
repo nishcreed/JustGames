@@ -1,27 +1,3 @@
-
-// const axios=require('axios');
-// const fs=require('fs')
-// const games= async() => {
-//     try{
-//         const res= await axios.get(`https://api.rawg.io/api/games?key=df73b51b24c44aa6807e6574cb408537`);
-//         console.log(res.data);
-//         const jsonString = JSON.stringify(res.data,null,2)
-//         fs.writeFile('./data.json',jsonString,err =>{
-//             if (err) {
-//                 console.log('Error writing file', err)
-//             } else {
-//                 console.log('Successfully wrote file')
-//             }  
-//         })
-//     }
-//     catch(e) {
-//         console.log(e);
-//     }
-// };
-// games();
-
-// id,name,released,background_image,rating,ratings_count,metacritic,playtime,platforms,genres,tags
-
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 mongoose.connect('mongodb://localhost:27017/game-library-web-app', {
@@ -37,8 +13,6 @@ db.once("open",()=>{
 });
 
 const data=require('./data.json')
-// console.log(typeof data)
-// console.log(data)
 
 
 const ratings=mongoose.Schema({
