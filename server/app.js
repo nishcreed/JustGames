@@ -56,7 +56,7 @@ db.once("open",()=>{
 app.use((req,res,next)=>{
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://justgames.onrender.com"
+    req.headers.origin
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
