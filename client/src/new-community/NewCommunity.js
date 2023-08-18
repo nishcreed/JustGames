@@ -9,7 +9,7 @@ export default function NewCommunity(){
 
     const formHandler = (e) => {
         e.preventDefault();
-        axios.post('/communities',{title:title})
+        axios.post('https://justgamesbackend.onrender.com/communities',{title:title})
         .then((res)=>{
             navigate('/communities');
         })

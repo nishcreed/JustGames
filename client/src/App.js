@@ -18,7 +18,7 @@ function App(){
   
   useEffect(()=>{
     async function func(){
-      const {data}= await axios.get("/home");
+      const {data}= await axios.get("https://justgamesbackend.onrender.com/home");
       setGames(data);
     }
     func();

@@ -8,7 +8,7 @@ export default function Blog(){
     const navigate =useNavigate();
 
     useEffect(()=>{
-        axios.get(`/blogs/${id}`)
+        axios.get(`https://justgamesbackend.onrender.com/blogs/${id}`)
         .then((res)=>{
             setBlog(res.data)
         })
@@ -18,7 +18,7 @@ export default function Blog(){
     },[])
 
     const formHandler =() =>{
-        axios.delete(`/blogs/${id}`)
+        axios.delete(`https://justgamesbackend.onrender.com/blogs/${id}`)
         .then((res)=>{
             navigate(-1);
         })

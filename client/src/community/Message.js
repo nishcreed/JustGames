@@ -14,7 +14,7 @@ export default function Message({msg}){
     }
 
     const delMsg =(msgId) =>{
-        axios.put(`/communities/${id}/msg`,{msgId:msgId})
+        axios.put(`https://justgamesbackend.onrender.com/communities/${id}/msg`,{msgId:msgId})
         .then((res)=>{
             navigate(0);
         })

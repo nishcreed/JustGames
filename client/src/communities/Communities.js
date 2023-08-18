@@ -6,7 +6,7 @@ export default function Communities(){
 
     const [comms,setComms]=useState([])
     useEffect(()=>{
-        axios.get('/communities')
+        axios.get('https://justgamesbackend.onrender.com/communities')
         .then((res)=>{
             setComms(res.data)
         })

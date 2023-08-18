@@ -10,7 +10,7 @@ export default function Login(){
     const [err,setErr]=useState(false);
 
     function handleSubmit(accnt){  
-        axios.post('/login',accnt)
+        axios.post('https://justgamesbackend.onrender.com/login',accnt)
         .then((res)=>{
             setErr(false);
             sessionStorage.setItem("username",accnt.username)

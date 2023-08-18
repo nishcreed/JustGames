@@ -5,7 +5,7 @@ import './navbar.css'
 export default function Navbar(){
 
     const logout=() =>{
-        axios.get('/logout')
+        axios.get('https://justgamesbackend.onrender.com/logout')
         .then((res)=>{
             sessionStorage.clear();
             setLog(false);  

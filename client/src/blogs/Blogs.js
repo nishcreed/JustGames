@@ -5,7 +5,7 @@ export default function Blogs(){
 
     const [blogs,setBlogs]=useState([])
     useEffect(()=>{
-        axios.get('/blogs')
+        axios.get('https://justgamesbackend.onrender.com/blogs')
         .then((res)=>{
             setBlogs(res.data)
         })

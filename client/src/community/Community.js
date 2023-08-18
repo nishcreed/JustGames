@@ -15,7 +15,7 @@ export default function Community(){
 
     const formHandler = (e) =>{
         e.preventDefault();
-        axios.post(`/communities/${id}`,
+        axios.post(`https://justgamesbackend.onrender.com/communities/${id}`,
         {'text':msg,
         'replyForName': (replyMsg!=null ? replyMsg.user.username : ''),
         'replyForText':(replyMsg!=null ? replyMsg.text : '')
@@ -30,7 +30,7 @@ export default function Community(){
     }
 
     useEffect(()=>{
-        axios.get(`/communities/${id}`)
+        axios.get(`https://justgamesbackend.onrender.com/communities/${id}`)
         .then((res)=>{
             setComm(res.data);
         })

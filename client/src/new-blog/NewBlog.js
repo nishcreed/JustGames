@@ -24,7 +24,7 @@ export default function NewBlog(){
                 setCont([...cont,<AddImg imgCnt={imgCnt}></AddImg>]);
         }
         else{
-            axios.get('/blogs/new')
+            axios.get('https://justgamesbackend.onrender.com/blogs/new')
             .then((res)=>{
                 setOptions(res.data);
             })  
@@ -58,7 +58,7 @@ export default function NewBlog(){
         e.preventDefault();
         const x=formToJSON(e.target);
         x.games=selGames;
-        axios.post('/blogs',x,{
+        axios.post('https://justgamesbackend.onrender.com/blogs',x,{
             headers: {
                 'content-type': 'multipart/form-data'
             }
