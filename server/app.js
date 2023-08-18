@@ -26,7 +26,8 @@ app.engine('ejs',ejsMate);
 
 app.use(cors(
   {
-    origin:['https://justgames.onrender.com/']
+    origin:['https://justgames.onrender.com/'],
+    credentials:true
   }
 ));
 app.use(express.json());
