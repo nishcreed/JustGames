@@ -25,7 +25,6 @@ app.engine('ejs',ejsMate);
 
 
 app.use(cors());
-https://justgames.onrender.com/
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.set('view engine','ejs');
@@ -57,7 +56,7 @@ db.once("open",()=>{
 app.use((req,res,next)=>{
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://justgames.onrender.com/"
+    "https://justgames.onrender.com"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -67,7 +66,7 @@ app.use((req,res,next)=>{
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS"
   );
-  
+
   res.locals.username=req.session.username;
   if(!req.session)
     res.locals.username=null
