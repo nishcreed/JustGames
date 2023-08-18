@@ -1,14 +1,17 @@
 import { useEffect,useState } from "react"
 import axios from 'axios'
 import './navbar.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar(){
+    const navigate =useNavigate();
 
     const logout=() =>{
         axios.get('https://justgamesbackend.onrender.com/logout')
         .then((res)=>{
-            sessionStorage.clear();
+            localStorage.clear();
             setLog(false);  
+            navigate(0);
         })
         .catch((err)=>{
             console.log(err);
@@ -18,7 +21,7 @@ export default function Navbar(){
 
     const [log,setLog]=useState(false)
     useEffect(()=>{
-        if(sessionStorage.getItem('username')!=null)
+        if(localStorage.getItem('username')!=null)
             setLog(true)
     },[])
 
@@ -51,7 +54,7 @@ export default function Navbar(){
                     {
                         log &&
                         <li className="nav-item ml-auto">
-                        <span className="nav-link">Hey, {sessionStorage.getItem('username')}</span>
+                        <span className="nav-link">Hey, {localStorage.getItem('username')}</span>
                         </li>
                     }
                     {   log &&

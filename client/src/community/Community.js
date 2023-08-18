@@ -81,10 +81,10 @@ export default function Community(){
                         </div>
                     </div>
                 }
-                {sessionStorage.getItem('username')==undefined && 
+                {localStorage.getItem('username')==undefined && 
                     <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to send message</span>}
                 <div id='send' className="input-group mb-3">
-                    <input disabled={sessionStorage.getItem('username')==undefined} name="text" onChange={(e)=>{setMsg(e.target.value)}} type="text" className="form-control bg-dark text-white" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                    <input disabled={localStorage.getItem('username')==undefined} name="text" onChange={(e)=>{setMsg(e.target.value)}} type="text" className="form-control bg-dark text-white" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <button className="btn btn-light" type="submit" id="button-addon2">Send</button>  
                 </div>
             </form>

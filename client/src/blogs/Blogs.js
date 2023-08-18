@@ -21,18 +21,18 @@ export default function Blogs(){
             {
             blogs.map((blog,ind)=>{
                 return ind%2==0 ? 
-                <a href={`blogs/${blog._id}`} className='list-group-item list-group-item-action d-flex justify-content-between'>
+                <a href={`blogs/${blog._id}`} className='list-group-item list-group-item-dark d-flex justify-content-between'>
                 {blog.title} <span className='ml-auto'>-{blog.user.username}</span>
                 </a> : 
-                <a href={`blogs/${blog._id}`} className='list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between'>
+                <a href={`blogs/${blog._id}`} className='list-group-item list-group-item-light list-group-item-secondary d-flex justify-content-between'>
                 {blog.title} <span className='ml-auto'>-{blog.user.username}</span>
                 </a>
             })}
             </div>
             {
-                sessionStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a blog</span><br /></span>
+                localStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a blog</span><br /></span>
             } 
-            <a href='/blogs/new' style={{pointerEvents:sessionStorage.getItem('username')==undefined? 'none':''}} type="button" className="btn btn-outline-light mt-3 mb-3">Post Blog</a>
+            <a href='/blogs/new' style={{pointerEvents:localStorage.getItem('username')==undefined? 'none':''}} type="button" className="btn btn-outline-light mt-3 mb-3">Post Blog</a>
                    
         </main>
 

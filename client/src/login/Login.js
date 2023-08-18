@@ -13,7 +13,7 @@ export default function Login(){
         axios.post('https://justgamesbackend.onrender.com/login',accnt)
         .then((res)=>{
             setErr(false);
-            sessionStorage.setItem("username",accnt.username)
+            localStorage.setItem("username",accnt.username)
             navigate(-1)    
         })
         .catch(err=>{

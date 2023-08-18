@@ -66,12 +66,8 @@ app.use((req,res,next)=>{
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS"
   );
-
-  res.locals.username=req.session.username;
-  if(!req.session)
-    res.locals.username=null
   next();
-})
+});
 
 app.get('/home', async (req, res) => {
   let games=await Game.find();
@@ -110,7 +106,7 @@ app.post('/login',async (req,res)=>{
   const {username,password}=req.body;
   const user=await User.find({username,password});
   if(user.length==0){
-    res.status(404).send('Incorrect Credentials')
+    res.status(404).send('Incorrect Credentials');
   }
   else{
     req.session.username=username;
@@ -132,7 +128,7 @@ app.post('/blogs',
         ]
         ),
         async(req,res)=>{
-  const user=await User.findOne({'username':res.locals.username});
+  const user=await User.findOne({'username':req.session.username});
   var str= req.body;
   var files=req.files;
 
@@ -210,7 +206,8 @@ app.get('/communities/:id',async (req,res)=>{
 });
 
 app.post('/communities/:id',async(req,res)=>{
-  const user=await User.findOne({'username':res.locals.username});
+  console.log(req.session.username);
+  const user=await User.findOne({'username':req.session.username});
   const replyForName=req.body.replyForName;
   const replyForText=req.body.replyForText;
   const message = {'text':req.body.text,'user':user._id,

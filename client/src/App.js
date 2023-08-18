@@ -27,8 +27,8 @@ function App(){
   return (
     <>
     <main>
-      <Navbar></Navbar>
       <Router>
+      <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Cards games={games}/>} />
         <Route path='/register' element={<Register />} />
@@ -39,7 +39,7 @@ function App(){
         <Route path='/communities' element={<Communities  />} />
         <Route path='/communities/new' element={<NewCommunity  />} />
         <Route path='/communities/:id' element={<Community />} />
-        <Route path='/:id' element={<Game />} />   
+        <Route path='/game/:id' element={<Game />} />   
       </Routes>
       </Router>
     </main>

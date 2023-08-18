@@ -12,7 +12,7 @@ export default function Card({game}){
                 <p>Released: {game.released}</p>
                 <p>Rating: {game.rating}</p>
             </p>
-            <a href={`/${game._id}`} className="btn btn-outline-light">Details</a>
+            <a href={`/game/${game._id}`} className="btn btn-outline-light">Details</a>
         </div>
         </div>
         

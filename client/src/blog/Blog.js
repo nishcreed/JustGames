@@ -53,7 +53,7 @@ export default function Blog(){
                     })
                 }
                 </div>
-                { sessionStorage.getItem('username')==blog.username && 
+                { localStorage.getItem('username')==blog.username && 
                 <form onSubmit={formHandler} >
                     <button type="submit" className="btn btn-outline-light mt-3">Delete</button> 
                 </form>

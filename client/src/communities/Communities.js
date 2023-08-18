@@ -21,19 +21,19 @@ export default function Communities(){
         {
             comms.map((comm,ind)=>{
                 return ind%2==0 ? 
-                <a href={`communities/${comm._id}`} className='list-group-item list-group-item-action d-flex justify-content-between'>
+                <a href={`communities/${comm._id}`} className='list-group-item list-group-item-dark d-flex justify-content-between'>
                 {comm.title}
                 </a> : 
-                <a href={`communities/${comm._id}`} className='list-group-item list-group-item-action list-group-item-secondary d-flex justify-content-between'>
+                <a href={`communities/${comm._id}`} className='list-group-item list-group-item-light list-group-item-secondary d-flex justify-content-between'>
                 {comm.title}
                 </a>
             })
         }
         </div>
             {
-                sessionStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a community</span><br /></span>
+                localStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a community</span><br /></span>
             } 
-            <a href='/communities/new' disabled={sessionStorage.getItem('username')==undefined} type="button" className="btn btn-outline-light mt-3 mb-3">Create Community</a>
+            <a href='/communities/new' disabled={localStorage.getItem('username')==undefined} type="button" className="btn btn-outline-light mt-3 mb-3">Create Community</a>
         </main>
     )
 }
