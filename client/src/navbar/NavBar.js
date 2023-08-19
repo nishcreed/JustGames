@@ -19,11 +19,10 @@ export default function Navbar(){
         
     }
 
-    const [log,setLog]=useState(false)
+    const [log,setLog]=useState("");
     useEffect(()=>{
-        if(localStorage.getItem('username')!=null)
-            setLog(true)
-    },[])
+        setLog(localStorage.getItem('username'));
+    },[]);
 
     return (
         <>
