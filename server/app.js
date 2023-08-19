@@ -75,13 +75,6 @@ app.get('/home', async (req, res) => {
   res.json(options);
 });
 
-app.post('/home',async(req,res)=>{
-  if(req.body.search==undefined)
-    res.redirect('/')
-  const games=await Game.find({"name":{$regex: req.body.search,$options:'i'}})
-  res.render('home',{ games })
-});
-
 app.post('/register',async (req,res)=>{
   const {email,username,password}=req.body;
   let t=await User.findOne({'email':email});
