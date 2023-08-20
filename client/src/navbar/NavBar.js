@@ -16,18 +16,9 @@ export default function Navbar(){
         .catch((err)=>{
             console.log(err);
         })
-        
     }
 
-    const [log,setLog]=useState("");
-    useEffect(()=>{
-        setLog(localStorage.getItem('username'));
-        window.addEventListener('login',()=>{
-            setTimeout(()=>{
-                window.location.reload();
-            },500);
-        })
-    },[]);
+    const [log,setLog]=useState(localStorage.getItem('username'));
 
     return (
         <>
@@ -58,7 +49,7 @@ export default function Navbar(){
                     {
                         log &&
                         <li className="nav-item ml-auto">
-                        <span className="nav-link">Hey, {localStorage.getItem('username')}</span>
+                        <span className="nav-link">Hey, {log}</span>
                         </li>
                     }
                     {   log &&

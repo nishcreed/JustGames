@@ -14,7 +14,6 @@ export default function Login(){
         .then((res)=>{
             setErr(false);
             localStorage.setItem("username",accnt.username);
-            window.dispatchEvent(new Event('login'));
             navigate(-1); 
         })
         .catch(err=>{
