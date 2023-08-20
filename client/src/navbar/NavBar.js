@@ -10,22 +10,24 @@ export default function Navbar(){
         axios.get('https://justgamesbackend.onrender.com/logout')
         .then((res)=>{
             localStorage.clear();
-            setLog(false);  
+            setLog("");  
             navigate(0);
         })
         .catch((err)=>{
             console.log(err);
         })
         
-    };
+    }
 
     const [log,setLog]=useState("");
     useEffect(()=>{
+        setLog(localStorage.getItem('username'));
         window.addEventListener('login',()=>{
-            setLog(localStorage.getItem('username'));
-        });
+            setTimeout(()=>{
+                navigate(0);
+            },100);
+        })
     },[]);
-    
 
     return (
         <>
