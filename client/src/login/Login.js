@@ -13,12 +13,13 @@ export default function Login(){
         axios.post('https://justgamesbackend.onrender.com/login',accnt)
         .then((res)=>{
             setErr(false);
-            localStorage.setItem("username",accnt.username)
-            navigate(-1)    
+            localStorage.setItem("username",accnt.username);
+            window.dispatchEvent(new Event('login'));
+            navigate(-1); 
         })
         .catch(err=>{
-            console.log(err.response.data)
-            setErr(true)
+            console.log(err.response.data);
+            setErr(true);
         })   
     }
 

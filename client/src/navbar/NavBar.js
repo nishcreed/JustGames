@@ -17,12 +17,15 @@ export default function Navbar(){
             console.log(err);
         })
         
-    }
+    };
 
     const [log,setLog]=useState("");
     useEffect(()=>{
-        setLog(localStorage.getItem('username'));
+        window.addEventListener('login',()=>{
+            setLog(localStorage.getItem('username'));
+        });
     },[]);
+    
 
     return (
         <>
