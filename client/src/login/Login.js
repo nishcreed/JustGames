@@ -1,19 +1,25 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { LogContext } from '../LogContext'
 import './login.css'
 
 
-export default function Login(){
+export default function Login({handleLog}){
 
     const navigate=useNavigate();
     const [err,setErr]=useState(false);
+    const {dispatch} = useContext(LogContext);
 
     function handleSubmit(accnt){  
         axios.post('https://justgamesbackend.onrender.com/login',accnt)
         .then((res)=>{
             setErr(false);
-            localStorage.setItem("username",accnt.username);
+            // dispatch({
+            //     type:'login',
+            //     username:accnt.username
+            // });
+            handleLog(accnt.username);
             navigate(-1); 
         })
         .catch(err=>{

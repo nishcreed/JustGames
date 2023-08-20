@@ -2,24 +2,29 @@ import { useEffect,useState } from "react"
 import axios from 'axios'
 import './navbar.css'
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { LogContext } from "../LogContext";
 
-export default function Navbar(){
+export default function Navbar({log,handleLog}){
     const navigate =useNavigate();
+    const {username} = useContext(LogContext);
+    const {dispatch} = useContext(LogContext);
+    // const log=username
 
     const logout=() =>{
         axios.get('https://justgamesbackend.onrender.com/logout')
         .then((res)=>{
-            localStorage.clear();
-            setLog("");  
+            // dispatch({
+            //     type:'logout',
+            // })
+            handleLog('');
             navigate(0);
         })
         .catch((err)=>{
             console.log(err);
         })
     }
-
-    const [log,setLog]=useState(localStorage.getItem('username'));
-
+    
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary"  data-bs-theme="dark">

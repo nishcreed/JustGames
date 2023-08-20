@@ -14,8 +14,8 @@ import Game from "./game/Game";
 import NewCommunity from "./new-community/NewCommunity";
 
 function App(){
-  const [games,setGames]=useState([])
-  
+  const [games,setGames]=useState([]);
+  const [log,setLog]=useState(localStorage.getItem('username'));
   useEffect(()=>{
     async function func(){
       const {data}= await axios.get("https://justgamesbackend.onrender.com/home");
@@ -24,15 +24,21 @@ function App(){
     func();
     
   },[])
+  const handleLog = (username) =>{
+    localStorage.setItem('username',username);
+    if(username=='')
+      localStorage.removeItem('username');
+    setLog(username);
+  }
   return (
     <>
     <main>
       <Router>
-      <Navbar></Navbar>
+      <Navbar log={log} handleLog={handleLog}></Navbar>
       <Routes>
         <Route path='/' element={<Cards games={games}/>} />
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login  />} />
+        <Route path='/login' element={<Login handleLog={handleLog} />} />
         <Route path='/blogs' element={<Blogs  />} />
         <Route path='/blogs/new' element={<NewBlog />} />
         <Route path='/blogs/:id' element={<Blog  />} />

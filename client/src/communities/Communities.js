@@ -33,7 +33,7 @@ export default function Communities(){
             {
                 localStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a community</span><br /></span>
             } 
-            <a href='/communities/new' disabled={localStorage.getItem('username')==undefined} type="button" className="btn btn-outline-light mt-3 mb-3">Create Community</a>
+            <a href='/communities/new' style={{pointerEvents:localStorage.getItem('username')==undefined? 'none':''}} type="button" className="btn btn-outline-light mt-3 mb-3">Create Community</a>
         </main>
     )
 }
