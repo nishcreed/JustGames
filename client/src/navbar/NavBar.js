@@ -24,8 +24,8 @@ export default function Navbar(){
         setLog(localStorage.getItem('username'));
         window.addEventListener('login',()=>{
             setTimeout(()=>{
-                navigate(0);
-            },100);
+                window.location.reload();
+            },500);
         })
     },[]);
 
