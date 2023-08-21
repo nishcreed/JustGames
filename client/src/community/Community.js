@@ -21,7 +21,7 @@ export default function Community(){
         {'text':msg,
         'replyForName': (replyMsg!=null ? replyMsg.user.username : ''),
         'replyForText':(replyMsg!=null ? replyMsg.text : '')
-        }
+        },{withCredentials:true}
         )
         .then((res)=>{
             navigate(0);
