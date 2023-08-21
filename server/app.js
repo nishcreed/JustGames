@@ -69,6 +69,10 @@ app.use((req,res,next)=>{
   next();
 });
 
+app.get('/user',async (req,res) =>{
+  res.json({username:req.session.username?req.session.username:null});
+})
+
 app.get('/home', async (req, res) => {
   let games=await Game.find();
   const options=games.map((game)=>{return{'label':game.name,'value':game}});
