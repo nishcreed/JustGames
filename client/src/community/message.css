@@ -14,7 +14,6 @@
     padding: 10px;
     border-radius: 5px;  
     margin-bottom: 10px;  
-    /* background-color: #333333; */
 }
 
 .sent-username{
@@ -27,7 +26,6 @@
     border-radius: 5px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    /* background-color: #333333; */
     width: 97%;
     position: relative;
     left:2.7%;

@@ -3,7 +3,6 @@ import './navbar.css'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { LogContext } from "../LogContext";
-// import { LogDispatchContext } from '../LogContext'
 
 export default function Navbar(){
     const navigate = useNavigate();
@@ -34,22 +33,18 @@ export default function Navbar(){
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    {/* <a className="nav-link active" aria-current="page" href="/">Home</a> */}
                     <Link className="nav-link active" aria-current="page" to={'/'}>Home</Link>
                     </li>
                     <li className="nav-item">
-                    {/* <a className="nav-link" href="/blogs">Blogs</a> */}
                     <Link className="nav-link" to={'/blogs'}>Blogs</Link>
                     </li>
                     <li className="nav-item">
-                    {/* <a className="nav-link" href="/communities">Communities</a> */}
                     <Link className="nav-link" to={'/communities'}>Communities</Link>
                     </li>
                 </ul>
                 <ul className="navbar-nav mb-2 mb-lg-0">
                     {   !log &&
                         <li className="nav-item ml-auto">
-                        {/* <a className="nav-link" href="/login">Login</a>  */}
                         <Link className="nav-link" onClick={(e)=>{e.preventDefault();localStorage.setItem('prev',location.pathname);navigate('/login')}} to={'/login'}>Login</Link>
                         </li> 
                     }
@@ -62,14 +57,12 @@ export default function Navbar(){
                     {   log &&
                         <>
                         <li className="nav-item ml-auto">
-                        {/* <a className="nav-link" onClick={logout} >Logout</a>  */}
                         <Link className="nav-link" onClick={logout}>Logout</Link>
                         </li> 
                         </>
                     }
                     {   !log &&
                         <li className="nav-item ml-auto">
-                        {/* <a className="nav-link" href="/register">Register</a> */}
                         <Link className="nav-link" to={'/register'} >Register</Link>
                         </li>
                     }
