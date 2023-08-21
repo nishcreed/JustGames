@@ -21,7 +21,7 @@ of the corresponding games' pages.
 ### Community
 Users can send message, reply to a message and delete their messages.
 
-## How to run
+## How to run locally
 - Run `npm install` inside root, client and server folders
 - Start the mongo server
 - Run `npm run dev` in the root folder. This command starts both the server and client
