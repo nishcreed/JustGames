@@ -1,24 +1,22 @@
-import { useEffect,useState } from "react"
 import axios from 'axios'
 import './navbar.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { LogContext } from "../LogContext";
+// import { LogDispatchContext } from '../LogContext'
 
-export default function Navbar({log,handleLog}){
-    const navigate =useNavigate();
-    const {username} = useContext(LogContext);
-    const {dispatch} = useContext(LogContext);
-    // const log=username
+export default function Navbar(){
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {username,setUsername } = useContext(LogContext);
+    const log = username;
 
     const logout=() =>{
         axios.get('https://justgamesbackend.onrender.com/logout')
         .then((res)=>{
-            // dispatch({
-            //     type:'logout',
-            // })
-            handleLog('');
-            navigate(0);
+            localStorage.removeItem('username');
+            setUsername(null);
+            navigate('/');
         })
         .catch((err)=>{
             console.log(err);
@@ -36,19 +34,23 @@ export default function Navbar({log,handleLog}){
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">Home</a>
+                    {/* <a className="nav-link active" aria-current="page" href="/">Home</a> */}
+                    <Link className="nav-link active" aria-current="page" to={'/'}>Home</Link>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="/blogs">Blogs</a>
+                    {/* <a className="nav-link" href="/blogs">Blogs</a> */}
+                    <Link className="nav-link" to={'/blogs'}>Blogs</Link>
                     </li>
                     <li className="nav-item">
-                    <a className="nav-link" href="/communities">Communities</a>
+                    {/* <a className="nav-link" href="/communities">Communities</a> */}
+                    <Link className="nav-link" to={'/communities'}>Communities</Link>
                     </li>
                 </ul>
                 <ul className="navbar-nav mb-2 mb-lg-0">
                     {   !log &&
                         <li className="nav-item ml-auto">
-                        <a className="nav-link" href="/login">Login</a> 
+                        {/* <a className="nav-link" href="/login">Login</a>  */}
+                        <Link className="nav-link" onClick={(e)=>{e.preventDefault();localStorage.setItem('prev',location.pathname);navigate('/login')}} to={'/login'}>Login</Link>
                         </li> 
                     }
                     {
@@ -60,14 +62,15 @@ export default function Navbar({log,handleLog}){
                     {   log &&
                         <>
                         <li className="nav-item ml-auto">
-                        <a className="nav-link" onClick={logout} >Logout</a> 
-                        
+                        {/* <a className="nav-link" onClick={logout} >Logout</a>  */}
+                        <Link className="nav-link" onClick={logout}>Logout</Link>
                         </li> 
                         </>
                     }
                     {   !log &&
                         <li className="nav-item ml-auto">
-                        <a className="nav-link" href="/register">Register</a>
+                        {/* <a className="nav-link" href="/register">Register</a> */}
+                        <Link className="nav-link" to={'/register'} >Register</Link>
                         </li>
                     }
                 </ul>

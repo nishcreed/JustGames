@@ -1,29 +1,16 @@
-import { createContext,useReducer } from "react";
+import axios from "axios";
+import { createContext,useContext,useEffect,useReducer, useState } from "react";
 
-export const LogContext = createContext(null);
-
-const logReducer = (state,action) =>{
-    switch(action.type) {
-        case 'login':{
-            localStorage.setItem('username',action.username)
-            return {username:action.username}
-        }
-        case 'logout':
-            return {username:''}
-        default:
-            return state
-    }
-}
-
+export const LogContext = createContext(null);;
 export const LogContextProvider = ({children}) => {
-    const [state,dispatch] = useReducer(logReducer,{
-        username:''
-    })
+    const [username,setUsername] = useState(null);
 
-    console.log(state);
-
+    useEffect(()=>{
+        setUsername(localStorage.getItem('username'));
+    },[username])
+    
     return(
-        <LogContext.Provider value={{...state,dispatch}}>
+        <LogContext.Provider value={{username,setUsername}}>
             {children}
         </LogContext.Provider>
     )

@@ -2,8 +2,19 @@ import { useEffect, useState } from "react";
 import Card from "../card/Card"
 import Select from 'react-select';
 import './cards.css'
+import axios from "axios";
 
-export default function Cards({games}){
+export default function Cards(){
+
+    const [games,setGames]=useState([]);
+    useEffect(()=>{
+        async function func(){
+          const {data}= await axios.get("https://justgamesbackend.onrender.com/home");
+          setGames(data);
+        }
+        func();
+        
+      },[])
 
     const [selGameObject,setSelGameObject]=useState(null);
 

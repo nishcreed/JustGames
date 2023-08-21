@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './blogs.css'
 import axios from 'axios'
+import { LogContext } from '../LogContext';
 export default function Blogs(){
 
-    const [blogs,setBlogs]=useState([])
+    const [blogs,setBlogs]=useState([]);
+    const {username} = useContext(LogContext);
+
     useEffect(()=>{
         axios.get('https://justgamesbackend.onrender.com/blogs')
         .then((res)=>{
@@ -30,9 +33,9 @@ export default function Blogs(){
             })}
             </div>
             {
-                localStorage.getItem('username')==undefined && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a blog</span><br /></span>
+                !username && <span> <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to create a blog</span><br /></span>
             } 
-            <a href='/blogs/new' style={{pointerEvents:localStorage.getItem('username')==undefined? 'none':''}} type="button" className="btn btn-outline-light mt-3 mb-3">Post Blog</a>
+            <a href='/blogs/new' style={{pointerEvents:!username? 'none':''}} type="button" className="btn btn-outline-light mt-3 mb-3">Post Blog</a>
                    
         </main>
 

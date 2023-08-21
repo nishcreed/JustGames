@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import './blog.css'
+import { LogContext } from "../LogContext";
 export default function Blog(){
     let { id } = useParams();
     const [blog,setBlog]=useState({});
     const navigate =useNavigate();
+    const {username} = useContext(LogContext);
 
     useEffect(()=>{
         axios.get(`https://justgamesbackend.onrender.com/blogs/${id}`)
@@ -53,7 +55,7 @@ export default function Blog(){
                     })
                 }
                 </div>
-                { localStorage.getItem('username')==blog.username && 
+                { username==blog.username && 
                 <form onSubmit={formHandler} >
                     <button type="submit" className="btn btn-outline-light mt-3">Delete</button> 
                 </form>

@@ -69,10 +69,6 @@ app.use((req,res,next)=>{
   next();
 });
 
-app.get('/user',async (req,res) =>{
-  res.json({username:req.session.username?req.session.username:null});
-})
-
 app.get('/home', async (req, res) => {
   let games=await Game.find();
   const options=games.map((game)=>{return{'label':game.name,'value':game}});
@@ -203,7 +199,6 @@ app.get('/communities/:id',async (req,res)=>{
 });
 
 app.post('/communities/:id',async(req,res)=>{
-  console.log(req.session.username);
   const user=await User.findOne({'username':req.session.username});
   const replyForName=req.body.replyForName;
   const replyForText=req.body.replyForText;

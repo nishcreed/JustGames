@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import './community.css'
 import Message from "./Message";
 import eventBus from './EventBus'
+import { LogContext } from "../LogContext";
 
 export default function Community(){
     
@@ -12,6 +13,7 @@ export default function Community(){
     const [msg,setMsg]=useState(null);
     const [replyMsg,setReplyMsg]=useState(null)
     const navigate=useNavigate();
+    const {username} = useContext(LogContext);
 
     const formHandler = (e) =>{
         e.preventDefault();
@@ -81,10 +83,10 @@ export default function Community(){
                         </div>
                     </div>
                 }
-                {localStorage.getItem('username')==undefined && 
+                {!username && 
                     <span style={{color:'yellow',fontStyle:'italic',fontSize:'0.8rem'}}>Log in to send message</span>}
                 <div id='send' className="input-group mb-3">
-                    <input disabled={localStorage.getItem('username')==undefined} name="text" onChange={(e)=>{setMsg(e.target.value)}} type="text" className="form-control bg-dark text-white" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                    <input disabled={!username} name="text" onChange={(e)=>{setMsg(e.target.value)}} type="text" className="form-control bg-dark text-white" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <button className="btn btn-light" type="submit" id="button-addon2">Send</button>  
                 </div>
             </form>

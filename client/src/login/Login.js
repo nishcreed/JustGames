@@ -1,37 +1,35 @@
 import axios from 'axios'
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { LogContext } from '../LogContext'
+import { useNavigate,redirect } from 'react-router-dom'
+import { LogContext } from "../LogContext";
 import './login.css'
 
 
-export default function Login({handleLog}){
+export default function Login(){
 
     const navigate=useNavigate();
     const [err,setErr]=useState(false);
-    const {dispatch} = useContext(LogContext);
-
-    function handleSubmit(accnt){  
-        axios.post('https://justgamesbackend.onrender.com/login',accnt)
-        .then((res)=>{
-            setErr(false);
-            // dispatch({
-            //     type:'login',
-            //     username:accnt.username
-            // });
-            handleLog(accnt.username);
-            navigate(-1); 
-        })
-        .catch(err=>{
-            console.log(err.response.data);
-            setErr(true);
-        })   
-    }
+    const {setUsername} = useContext(LogContext);
 
     const [accnt,setAccnt]=useState({
         username:"",
         password:""
     })
+
+    function handleSubmit(accnt){  
+        axios.post('https://justgamesbackend.onrender.com/login',accnt)
+        .then((res)=>{
+            setErr(false);
+            localStorage.setItem('username',accnt.username);
+            setUsername(accnt.username);
+            navigate(localStorage.getItem('prev'));
+        })
+        .catch(err=>{
+            console.log(err);
+            setErr(true);
+        })   
+    }
+
     return(
         <div className="login-form bg-dark text-white">
             <form onSubmit={(e)=>{e.preventDefault(); handleSubmit(accnt); }}>
