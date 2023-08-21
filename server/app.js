@@ -25,7 +25,10 @@ const app = express();
 app.engine('ejs',ejsMate);
 
 
-app.use(cors());
+app.use(cors({
+  origin:"https://justgames.onrender.com",
+  credentials:true
+}));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.set('view engine','ejs');
