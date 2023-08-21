@@ -67,7 +67,8 @@ const sessionConfig = {
         httpOnly: true,
         // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        sameSite: 'none'
     }
 }
 
@@ -220,6 +221,7 @@ app.get('/communities/:id',async (req,res)=>{
 });
 
 app.post('/communities/:id',async(req,res)=>{
+  console.log(req.session.username);
   const user=await User.findOne({'username':req.session.username});
   const replyForName=req.body.replyForName;
   const replyForText=req.body.replyForText;
