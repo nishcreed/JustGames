@@ -14,7 +14,7 @@ A game library web app that shows the details of released games, allows users to
 
 ### Blog
 Users can dynamically add textareas or image input fields in any order they want and the posted blog would be in the same order. 
-Users can mention some games as tags to which the blogs would be linked, i.e., link of the posted blog would be available in the details 
+Users can mention some games as tags which the blogs would be linked to, i.e., link of the posted blog would be available in the details 
 of the corresponding games' pages.
 
 
