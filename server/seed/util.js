@@ -81,28 +81,4 @@ for(let d of data['results'].slice(0,50)){
     })
     eg.save();
 }
-
-
-// Games.insertMany([
-//     {overview:'lorem1',platforms:'lorem2',genre:'lorem3',release:2018,publisher:'lorem4'},
-//     {overview:'lorem1',platforms:'lorem2',genre:'lorem3',release:2019,publisher:'lorem4'},
-//     {overview:'lorem1',platforms:'lorem2',genre:'lorem3',release:2017,publisher:'lorem4'},
-// ])//no need to save
-//     .then(data =>{
-//         console.log('worked')
-//         console.log(data);
-//     })
-
-// Games.find({})
-//     .then(data=>{
-//         console.log(data)
-//     })
-// Games.findById('').then(m =>{})
-
-// Games.updateOne({},{}).then(res => console.log(res))//does not return the doc
-// Games.findOneAndUpdate({},{})//returns the doc\
-
-// Games.remove({}).then(data =>console.log(data))
-// Games.deleteMany({release:{$gte:2015}}).then(msg => console.log(msg))
-// Games.findOneAndDelete({title:'ALien'}).then(m=>console.log(m))
  
