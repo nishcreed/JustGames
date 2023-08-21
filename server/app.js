@@ -71,7 +71,7 @@ const sessionConfig = {
         sameSite: 'none'
     }
 }
-
+app.set("trust proxy", 1);
 app.use(sessions(sessionConfig));
 
 
