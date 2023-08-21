@@ -15,6 +15,7 @@ const upload = require('./cloudinary/index')
 const mongoose=require('mongoose');
 const path = require('path')
 const cors = require("cors");
+const MongoStore = require('connect-mongo');
 
 process.on('uncaughtException',(err)=>{
   console.log(err)
@@ -30,15 +31,6 @@ app.use(methodOverride('_method'));
 app.set('view engine','ejs');
 app.use( express.static( path.join(__dirname, './public') ) );
 
-const oneDay = 1000 * 60 * 60 * 24;
-
-
-app.use(sessions({
-    secret: "thisismysecretkey",
-    saveUninitialized:true,
-    cookie: { maxAge: oneDay },
-    resave: false
-}));
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/game-library-web-app';
 mongoose.connect(dbUrl, {
@@ -51,6 +43,35 @@ db.on("error",console.error.bind(console,"connection error:"));
 db.once("open",()=>{
     console.log("Database connected");
 });
+
+
+const secret = 'thisshouldbeabettersecret!';
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24*60*60 
+})
+
+store.on("error",function(e){
+    console.log("session error",e)
+})
+
+const sessionConfig = {
+    store,
+    name: 'session',
+    secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+app.use(sessions(sessionConfig));
 
 
 app.use((req,res,next)=>{
