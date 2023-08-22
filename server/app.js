@@ -29,7 +29,8 @@ app.use(cors({
   origin:"https://justgames.onrender.com",
   methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders:['Origin',' X-Requested-With', 'Content-Type', 'Accept', 'Authorization','X-Forwarded-For','X-Forwarded-Proto'],
-  credentials:true
+  credentials:true,
+  preflightContinue:true
 }));
 app.use(express.json());
 app.use(methodOverride('_method'));
