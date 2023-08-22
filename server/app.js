@@ -85,6 +85,11 @@ if(process.env.NODE_ENV == "production"){
 
 app.use(sessions(sessionConfig));
 
+app.use((req,res,next)=>{
+  console.log(req.session);
+  next();
+})
+
 app.get('/home', async (req, res) => {
   let games=await Game.find();
   const options=games.map((game)=>{return{'label':game.name,'value':game}});
