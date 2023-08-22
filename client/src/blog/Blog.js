@@ -22,7 +22,7 @@ export default function Blog(){
     const formHandler =() =>{
         axios.delete(`https://justgamesbackend.onrender.com/blogs/${id}`,{withCredentials:true})
         .then((res)=>{
-            navigate(-1);
+            navigate('/blogs');
         })
         .catch((err)=>{
             console.log(err)
