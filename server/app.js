@@ -83,12 +83,6 @@ if(process.env.NODE_ENV == "production"){
 
 app.use(sessions(sessionConfig));
 
-app.use((req,res,next)=>{
-  console.log(req.session.username);
-  console.log(process.env.CLOUDINARY_Key);
-  next();
-})
-
 app.get('/home', async (req, res) => {
   let games=await Game.find();
   const options=games.map((game)=>{return{'label':game.name,'value':game}});
@@ -144,7 +138,6 @@ app.post('/blogs',
   const user=await User.findOne({'username':req.session.username});
   var str= req.body;
   var files=req.files;
-  console.log(str,files)
   var text=[];
   var image;
   var body=[];
