@@ -26,7 +26,7 @@ app.engine('ejs',ejsMate);
 
 
 app.use(cors({
-  origin:"https://justgames.onrender.com",
+  origin:["https://justgames.onrender.com","http://localhost:3000"],
   methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders:['Origin',' X-Requested-With', 'Content-Type', 'Accept', 'Authorization','X-Forwarded-For','X-Forwarded-Proto'],
   credentials:true,
@@ -80,7 +80,7 @@ if(process.env.NODE_ENV == "production"){
   app.set("trust proxy", 1);
   sessionConfig.proxy=true;
   sessionConfig.cookie.sameSite='none';
-  // sessionConfig.secure = true,
+  sessionConfig.secure = true,
   sessionConfig.cookie.domain='.onrender.com';
 }
 
