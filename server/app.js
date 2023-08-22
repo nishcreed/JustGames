@@ -85,23 +85,6 @@ if(process.env.NODE_ENV == "production"){
 
 app.use(sessions(sessionConfig));
 
-
-app.use((req,res,next)=>{
-  // res.setHeader(
-  //   "Access-Control-Allow-Origin",
-  //   "https://justgames.onrender.com"
-  // );
-  // res.setHeader(
-  //   "Access-Control-Allow-Headers",
-  //   "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  // );
-  // res.setHeader(
-  //   "Access-Control-Allow-Methods",
-  //   "GET, POST, PUT, DELETE, OPTIONS"
-  // );
-  next();
-});
-
 app.get('/home', async (req, res) => {
   let games=await Game.find();
   const options=games.map((game)=>{return{'label':game.name,'value':game}});
