@@ -122,7 +122,6 @@ app.post('/login',async (req,res)=>{
   }
   else{
     req.session.username=username;
-    console.log(req.session.username);
     res.status(200).send("Logged In");
   }
 });
@@ -144,7 +143,7 @@ app.post('/blogs',
   const user=await User.findOne({'username':req.session.username});
   var str= req.body;
   var files=req.files;
-
+  console.log(str,files)
   var text=[];
   var image;
   var body=[];
@@ -219,7 +218,6 @@ app.get('/communities/:id',async (req,res)=>{
 });
 
 app.post('/communities/:id',async(req,res)=>{
-  console.log(req.session.username);
   const user=await User.findOne({'username':req.session.username});
   const replyForName=req.body.replyForName;
   const replyForText=req.body.replyForText;
