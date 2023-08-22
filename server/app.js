@@ -5,7 +5,6 @@ if(process.env.NODE_ENV !== "production"){
 
 const express = require('express');
 const sessions = require("express-session")
-const ejsMate=require('ejs-mate');
 const methodOverride=require('method-override');
 const Game=require('./models/game')
 const User=require('./models/user')
@@ -22,8 +21,9 @@ process.on('uncaughtException',(err)=>{
 })
 
 const app = express();
-app.engine('ejs',ejsMate);
-
+if(process.env.NODE_ENV == "production"){
+  app.set("trust proxy", 1);
+}
 
 app.use(cors({
   origin:["https://justgames.onrender.com","http://localhost:3000"],
@@ -34,7 +34,6 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.set('view engine','ejs');
 app.use( express.static( path.join(__dirname, './public') ) );
 
 
@@ -77,11 +76,9 @@ const sessionConfig = {
 }
 
 if(process.env.NODE_ENV == "production"){
-  app.set("trust proxy", 1);
   sessionConfig.proxy=true;
   sessionConfig.cookie.sameSite='none';
-  sessionConfig.secure = true,
-  sessionConfig.cookie.domain='.onrender.com';
+  sessionConfig.cookie.secure = true
 }
 
 app.use(sessions(sessionConfig));
