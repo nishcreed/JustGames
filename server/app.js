@@ -27,7 +27,7 @@ app.engine('ejs',ejsMate);
 
 app.use(cors({
   origin:"https://justgames.onrender.com",
-  methods:'GET, POST, PUT, DELETE, OPTIONS',
+  methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders:['Origin',' X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials:true
 }));
