@@ -86,7 +86,7 @@ if(process.env.NODE_ENV == "production"){
 app.use(sessions(sessionConfig));
 
 app.use((req,res,next)=>{
-  console.log(req.session);
+  console.log(req.session.username);
   next();
 })
 
