@@ -85,6 +85,7 @@ app.use(sessions(sessionConfig));
 
 app.use((req,res,next)=>{
   console.log(req.session.username);
+  console.log(process.env.CLOUDINARY_Key);
   next();
 })
 
