@@ -8,7 +8,7 @@ export default function Register(){
 
     const navigate=useNavigate()
     function handleSubmit(accnt){  
-        axios.post('https://justgamesbackend.onrender.com/register',accnt)
+        axios.post('https://justgamesbackend.onrender.com/register',accnt,{withCredentials:true})
         .then((res)=>{
             navigate('/')
         })

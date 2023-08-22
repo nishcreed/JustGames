@@ -10,7 +10,7 @@ export default function Blog(){
     const {username} = useContext(LogContext);
 
     useEffect(()=>{
-        axios.get(`https://justgamesbackend.onrender.com/blogs/${id}`)
+        axios.get(`https://justgamesbackend.onrender.com/blogs/${id}`,{withCredentials:true})
         .then((res)=>{
             setBlog(res.data)
         })
@@ -20,7 +20,7 @@ export default function Blog(){
     },[])
 
     const formHandler =() =>{
-        axios.delete(`https://justgamesbackend.onrender.com/blogs/${id}`)
+        axios.delete(`https://justgamesbackend.onrender.com/blogs/${id}`,{withCredentials:true})
         .then((res)=>{
             navigate(-1);
         })

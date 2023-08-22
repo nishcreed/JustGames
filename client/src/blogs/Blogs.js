@@ -8,7 +8,7 @@ export default function Blogs(){
     const {username} = useContext(LogContext);
 
     useEffect(()=>{
-        axios.get('https://justgamesbackend.onrender.com/blogs')
+        axios.get('https://justgamesbackend.onrender.com/blogs',{withCredentials:true})
         .then((res)=>{
             setBlogs(res.data)
         })

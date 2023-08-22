@@ -11,7 +11,7 @@ export default function Navbar(){
     const log = username;
 
     const logout=() =>{
-        axios.get('https://justgamesbackend.onrender.com/logout')
+        axios.get('https://justgamesbackend.onrender.com/logout',{withCredentials:true})
         .then((res)=>{
             localStorage.removeItem('username');
             setUsername(null);

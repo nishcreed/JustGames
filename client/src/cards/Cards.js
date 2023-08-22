@@ -9,7 +9,7 @@ export default function Cards(){
     const [games,setGames]=useState([]);
     useEffect(()=>{
         async function func(){
-          const {data}= await axios.get("https://justgamesbackend.onrender.com/home");
+          const {data}= await axios.get("https://justgamesbackend.onrender.com/home",{withCredentials:true});
           setGames(data);
         }
         func();

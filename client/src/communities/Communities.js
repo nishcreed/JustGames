@@ -8,7 +8,7 @@ export default function Communities(){
     const [comms,setComms]=useState([]);
     const {username} = useContext(LogContext);
     useEffect(()=>{
-        axios.get('https://justgamesbackend.onrender.com/communities')
+        axios.get('https://justgamesbackend.onrender.com/communities',{withCredentials:true})
         .then((res)=>{
             setComms(res.data)
         })

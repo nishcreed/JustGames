@@ -17,7 +17,7 @@ export default function Login(){
     })
 
     function handleSubmit(accnt){  
-        axios.post('https://justgamesbackend.onrender.com/login',accnt)
+        axios.post('https://justgamesbackend.onrender.com/login',accnt,{withCredentials:true})
         .then((res)=>{
             setErr(false);
             localStorage.setItem('username',accnt.username);

@@ -32,7 +32,7 @@ export default function Community(){
     }
 
     useEffect(()=>{
-        axios.get(`https://justgamesbackend.onrender.com/communities/${id}`)
+        axios.get(`https://justgamesbackend.onrender.com/communities/${id}`,{withCredentials:true})
         .then((res)=>{
             setComm(res.data);
         })

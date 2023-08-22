@@ -7,7 +7,7 @@ export default function Game(){
     const {id} = useParams();
     const [game,setGame]=useState({});
     useEffect(()=>{
-        axios.get(`https://justgamesbackend.onrender.com/${id}`)
+        axios.get(`https://justgamesbackend.onrender.com/${id}`,{withCredentials:true})
         .then((res)=>{
             setGame(res.data);
         })
