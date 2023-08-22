@@ -54,11 +54,11 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     secret,
     touchAfter: 24*60*60 
-})
+});
 
 store.on("error",function(e){
     console.log("session error",e)
-})
+});
 
 const sessionConfig = {
     store,
@@ -70,12 +70,17 @@ const sessionConfig = {
         httpOnly: true,
         secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-        domain:'.onrender.com',
-        sameSite: 'none'
+        maxAge: 1000 * 60 * 60 * 24 * 7,  
     }
 }
-app.set("trust proxy", 1);
+
+if(process.env.NODE_ENV === "production"){
+  app.set("trust proxy", 1);
+  sessionConfig.cookie.sameSite='none';
+  sessionConfig.cookie.domain='.onrender.com';
+  sessionConfig={...sessionConfig};
+}
+
 app.use(sessions(sessionConfig));
 
 
@@ -129,6 +134,7 @@ app.post('/login',async (req,res)=>{
   }
   else{
     req.session.username=username;
+    console.log(req.session.username);
     res.status(200).send("Logged In");
   }
 });
