@@ -70,7 +70,6 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: false,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
@@ -80,6 +79,8 @@ if(process.env.NODE_ENV == "production"){
   app.set("trust proxy", 1);
   sessionConfig.proxy=true;
   sessionConfig.cookie.sameSite='none';
+  // sessionConfig.secure = true,
+  sessionConfig.cookie.domain='.onrender.com';
 }
 
 app.use(sessions(sessionConfig));
