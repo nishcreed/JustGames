@@ -76,6 +76,7 @@ const sessionConfig = {
 
 if(process.env.NODE_ENV === "production"){
   app.set("trust proxy", 1);
+  sessionConfig.proxy=true;
   sessionConfig.cookie.sameSite='none';
   sessionConfig.cookie.domain='.onrender.com';
 }
