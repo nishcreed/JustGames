@@ -27,7 +27,7 @@ Users can send message, reply to a message and delete their messages.
 - Run `npm run dev` in the root folder. This command starts both the server and client
 
 ## App
-https://justgames.onrender.com/communities
+https://justgames.onrender.com/
 
 
 
